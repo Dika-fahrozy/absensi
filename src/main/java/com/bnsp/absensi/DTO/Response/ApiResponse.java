@@ -22,15 +22,6 @@ public class ApiResponse<T> {
     @Schema(description = "Error details (jika ada)")
     private Object errors;
 
-    public static <T> ApiResponse<T> success(T data) {
-        return ApiResponse.<T>builder()
-                .success(true)
-                .code(HttpStatus.OK.value())
-                .message("Success")
-                .data(data)
-                .build();
-    }
-
     public static <T> ApiResponse<T> success(T data, String message) {
         return ApiResponse.<T>builder()
                 .success(true)
@@ -73,9 +64,5 @@ public class ApiResponse<T> {
                 .message(message)
                 .errors(errors)
                 .build();
-    }
-
-    public static <T> ApiResponse<T> error(HttpStatus status, String message, Object errors) {
-        return error(status.value(), message, errors);
     }
 }

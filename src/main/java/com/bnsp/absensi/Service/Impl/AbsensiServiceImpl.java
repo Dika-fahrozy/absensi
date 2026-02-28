@@ -8,7 +8,6 @@ import com.bnsp.absensi.Repository.KaryawanRepository;
 import com.bnsp.absensi.Service.AbsensiService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

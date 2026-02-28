@@ -1,6 +1,5 @@
 package com.bnsp.absensi.Repository;
 
-import com.bnsp.absensi.DTO.KaryawanDTO;
 import com.bnsp.absensi.Model.Karyawan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

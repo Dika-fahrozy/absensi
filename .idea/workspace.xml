@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8d5b458-0956-4cd9-8bab-be153d57e52e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/01-spesifikasi-kebutuhan-perangkat-lunak.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/01-spesifikasi-kebutuhan-perangkat-lunak.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/02-rancangan-struktur-perangkat-lunak.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/02-rancangan-struktur-perangkat-lunak.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/03-review-kebutuhan-perangkat-lunak.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/03-review-kebutuhan-perangkat-lunak.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/04-validasi-model-uji-penerimaan.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/04-validasi-model-uji-penerimaan.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/05-penerapan-akses-basis-data.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/05-penerapan-akses-basis-data.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bnsp/absensi/DTO/Response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bnsp/absensi/DTO/Response/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bnsp/absensi/Repository/KaryawanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bnsp/absensi/Repository/KaryawanRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/AbsensiApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/AbsensiApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Config/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Config/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/KaryawanDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/KaryawanDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Request/AbsensiRequestDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Request/AbsensiRequestDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/AbsensiResponseDTO$AbsensiResponseDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/AbsensiResponseDTO$AbsensiResponseDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/AbsensiResponseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/AbsensiResponseDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/ApiResponse$ApiResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/ApiResponse$ApiResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/ApiResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/DTO/Response/ApiResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Model/Absensi$StatusAbsensi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Model/Absensi$StatusAbsensi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Model/Absensi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bnsp/absensi/Model/Absensi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bnsp/absensi/AbsensiApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,25 +49,31 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="39yyztO3lNNPoVStQJNKfZ6dtsZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.AbsensiApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/dikaoji/Documents/project/absensi",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AbsensiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.absensi [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.absensi [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dikaoji/Documents/project/absensi&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e8d5b458-0956-4cd9-8bab-be153d57e52e" name="Changes" comment="" />

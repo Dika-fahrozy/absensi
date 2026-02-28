@@ -5,7 +5,7 @@
 **Nama Proyek:** Absensi Karyawan API  
 **Versi Dokumen:** 1.0  
 **Tanggal:** 27 Februari 2026  
-**Penyusun:** Tim Pengembang  
+**Penyusun:** Dika Fahrozy  
 
 ---
 
@@ -33,21 +33,21 @@ Dokumen ini menjelaskan implementasi akses basis data pada sistem **Absensi Kary
 
 ## 2. Konfigurasi Koneksi Database
 
-### 2.1 Konfigurasi Aplikasi (application.properties / application.yml)
+### 2.1 Konfigurasi Aplikasi (absensi.properties)
 
-Konfigurasi database dibaca dari file konfigurasi `application.properties` bawaan Spring Boot:
+Konfigurasi database dibaca dari file konfigurasi `absensi.properties` pada folder config:
 
 ```properties
-# src/main/resources/application.properties
+# config/absensi.properties
 
-spring.datasource.url=jdbc:mysql://localhost:3306/absensi_db?useSSL=false&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://localhost:3306/absen?useSSL=false&serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=supersecret
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 # JPA & Hibernate Settings
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+spring.jpa.show-sql=false
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 
 # HikariCP Connection Pool (opsional, tuning)
@@ -61,7 +61,7 @@ spring.datasource.hikari.minimum-idle=2
 | ------------------------------------- | --------------------------------------------- |
 | `spring.datasource.url`               | JDBC String koneksi ke MySQL                  |
 | `spring.jpa.hibernate.ddl-auto=update`| Hibernate akan otomatis membuat/mengupdate struktur tabel pada database sesuai file Model Entity. |
-| `spring.jpa.show-sql=true`            | Menampilkan query SQL yang dieksekusi JPA di log terminal. |
+| `spring.jpa.show-sql=false`           | Menyembunyikan query SQL yang dieksekusi JPA (default production). |
 | `maximum-pool-size=10`                | Setting pool HikariCP membatasi max 10 koneksi simultan. |
 
 ---
@@ -81,8 +81,9 @@ Sistem menggunakan model berbasis anotasi JPA (`@Entity`) tanpa harus menulis sc
 public class Karyawan {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @UuidGenerator(style = UuidGenerator.Style.RANDOM)
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    private UUID id;
 
     @Column(nullable = false)
     private String nama;
@@ -94,15 +95,12 @@ public class Karyawan {
     private String email;
 
     private String departemen;
+
     private String jabatan;
 
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }
 ```
 
@@ -111,14 +109,16 @@ public class Karyawan {
 ```java
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "absensi")
 public class Absensi {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @UuidGenerator(style = UuidGenerator.Style.RANDOM)
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    private UUID id;
 
-    // Relasi Many-to-One dengan tabel Karyawan
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "karyawan_id", nullable = false)
     private Karyawan karyawan;
@@ -135,27 +135,17 @@ public class Absensi {
     @Enumerated(EnumType.STRING)
     private StatusAbsensi status;
 
+    @Column(name = "keterangan")
     private String keterangan;
 
-    @Column(name = "created_at", updatable = false)
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        tanggal = LocalDate.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
-
     public enum StatusAbsensi {
-        HADIR, TERLAMBAT, IZIN, SAKIT, ALFA
+        HADIR, TERLAMBAT
     }
 }
 ```
@@ -175,6 +165,10 @@ public interface KaryawanRepository extends JpaRepository<Karyawan, Long> {
     boolean existsByNip(String nip);
     
     boolean existsByEmail(String email);
+
+    Optional<Karyawan> findById(UUID id);
+
+    Optional<Karyawan> findByNip(String nip);
 }
 ```
 

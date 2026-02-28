@@ -187,12 +187,12 @@ Menghapus master data karyawan berdasarkan ID.
 
 ### 3.6 FR-06: Check-In Absensi
 
-| Atribut       | Detail                                  |
-|---------------|-----------------------------------------|
-| **ID**        | FR-06                                   |
-| **Nama**      | Check-In Karyawan                       |
-| **Prioritas** | Tinggi                                  |
-| **Endpoint**  | `POST /absensi/checkin?karyawanId={id}` |
+| Atribut       | Detail                            |
+|---------------|-----------------------------------|
+| **ID**        | FR-06                             |
+| **Nama**      | Check-In Karyawan                 |
+| **Prioritas** | Tinggi                            |
+| **Endpoint**  | `POST /absensi/checkin?nip={nip}` |
 
 **Deskripsi:**  
 Karyawan melakukan absensi masuk (check-in) untuk hari ini.
@@ -210,12 +210,12 @@ Karyawan melakukan absensi masuk (check-in) untuk hari ini.
 
 ### 3.7 FR-07: Check-Out Absensi
 
-| Atribut       | Detail                                   |
-|---------------|------------------------------------------|
-| **ID**        | FR-07                                    |
-| **Nama**      | Check-Out Karyawan                       |
-| **Prioritas** | Tinggi                                   |
-| **Endpoint**  | `POST /absensi/checkout?karyawanId={id}` |
+| Atribut       | Detail                             |
+|---------------|------------------------------------|
+| **ID**        | FR-07                              |
+| **Nama**      | Check-Out Karyawan                 |
+| **Prioritas** | Tinggi                             |
+| **Endpoint**  | `POST /absensi/checkout?nip={nip}` |
 
 **Deskripsi:**  
 Karyawan melakukan pencatatan jam keluar kerja.
@@ -248,9 +248,9 @@ Menampilkan data absensi seluruh karyawan yang berada pada rentang tanggal `star
 
 ### 4.1 NFR-01: Performa (Performance)
 
-| ID      | Kebutuhan         | Target               |
-|---------|-------------------|----------------------|
-| NFR-01a | Response time API | < 1000ms per request |
+| ID      | Kebutuhan         | Target              |
+|---------|-------------------|---------------------|
+| NFR-01a | Response time API | < 500ms per request |
 
 ### 4.2 NFR-02: Desain & Arsitektur
 
@@ -285,15 +285,15 @@ Menampilkan data absensi seluruh karyawan yang berada pada rentang tanggal `star
     │Client /│      │  │ (CRUD)                 │     │
     │System  │      │  └────────────────────────┘     │
     │        │      │                                 │
-    │        │      │  ┌─────────────────────┐        │
-    │        │──────┼─▶│ UC-02: Check-In     │        │
-    │        │      │  └─────────────────────┘        │
-    │        │      │  ┌─────────────────────┐        │
-    │        │──────┼─▶│ UC-03: Check-Out    │        │
-    │        │      │  └─────────────────────┘        │
-    │        │      │  ┌─────────────────────┐        │
-    │        │──────┼─▶│ UC-04: Rekap Absensi│        │
-    │        │      │  └─────────────────────┘        │
+    │        │      │  ┌──────────────────────┐       │
+    │        │──────┼─▶│ UC-02: Check-In      │       │
+    │        │      │  └──────────────────────┘       │
+    │        │      │  ┌──────────────────────┐       │
+    │        │──────┼─▶│ UC-03: Check-Out     │       │
+    │        │      │  └──────────────────────┘       │
+    │        │      │  ┌──────────────────────┐       │
+    │        │──────┼─▶│ UC-04: Rekap Absensi │       │
+    │        │      │  └──────────────────────┘       │
     └────────┘      └─────────────────────────────────┘
 ```
 
@@ -301,16 +301,16 @@ Menampilkan data absensi seluruh karyawan yang berada pada rentang tanggal `star
 
 ## 6. Matriks Kebutuhan (Traceability Matrix)
 
-| Kebutuhan | Endpoint                    | Model/DTO             | Service / Repository                    | Status    |
-|-----------|-----------------------------|-----------------------|-----------------------------------------|-----------|
-| FR-01     | POST /karyawan              | KaryawanDTO, Karyawan | KaryawanService.createKaryawan          | ✅ Selesai |
-| FR-02     | GET /karyawan               | Karyawan              | KaryawanService.getAllKaryawan          | ✅ Selesai |
-| FR-03     | GET /karyawan/{id}          | Karyawan              | KaryawanService.getKaryawanById         | ✅ Selesai |
-| FR-04     | PUT /karyawan/{id}          | KaryawanDTO, Karyawan | KaryawanService.updateKaryawan          | ✅ Selesai |
-| FR-05     | DELETE /karyawan/{id}       | —                     | KaryawanService.deleteKaryawan          | ✅ Selesai |
-| FR-06     | POST /absensi/checkin       | AbsensiResponseDTO    | AbsensiService.checkIn                  | ✅ Selesai |
-| FR-07     | POST /absensi/checkout      | AbsensiResponseDTO    | AbsensiService.checkOut                 | ✅ Selesai |
-| FR-08     | GET /absensi/karyawan/range | AbsensiResponseDTO    | AbsensiService.getAbsensiBy...DateRange | ✅ Selesai |
+| Kebutuhan | Endpoint                    | Model/DTO             | Service / Repository                            | Status    |
+|-----------|-----------------------------|-----------------------|-------------------------------------------------|-----------|
+| FR-01     | POST /karyawan              | KaryawanDTO, Karyawan | KaryawanService.createKaryawan                  | ✅ Selesai |
+| FR-02     | GET /karyawan               | Karyawan              | KaryawanService.getAllKaryawan                  | ✅ Selesai |
+| FR-03     | GET /karyawan/{id}          | Karyawan              | KaryawanService.getKaryawanById                 | ✅ Selesai |
+| FR-04     | PUT /karyawan/{id}          | KaryawanDTO, Karyawan | KaryawanService.updateKaryawan                  | ✅ Selesai |
+| FR-05     | DELETE /karyawan/{id}       | —                     | KaryawanService.deleteKaryawan                  | ✅ Selesai |
+| FR-06     | POST /absensi/checkin       | AbsensiResponseDTO    | AbsensiService.checkIn                          | ✅ Selesai |
+| FR-07     | POST /absensi/checkout      | AbsensiResponseDTO    | AbsensiService.checkOut                         | ✅ Selesai |
+| FR-08     | GET /absensi/karyawan/range | AbsensiResponseDTO    | AbsensiService.getAbsensiByKaryawanAndDateRange | ✅ Selesai |
 
 ---
 

@@ -5,7 +5,7 @@
 **Nama Proyek:** Absensi Karyawan API  
 **Versi Dokumen:** 1.0  
 **Tanggal:** 27 Februari 2026  
-**Penyusun:** Tim Pengembang  
+**Penyusun:** Dika Fahrozy 
 
 ---
 
@@ -75,12 +75,12 @@ Dokumen ini mendefinisikan:
 
 ### 3.1 TC-01: Tambah Karyawan Baru (FR-01)
 
-| ID       | Skenario               | Input                                                               | Expected Result                                    | Status  |
-| -------- | ---------------------- | ------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| TC-01-01 | Tambah Karyawan valid  | `{"nama":"Andi", "nip":"123", "email":"a@b.com", "departemen":"IT"}`| 201 Created, success: true, data tersimpan         | ✅ Pass |
-| TC-01-02 | Tambah Karyawan NIP Duplikat | Input ulang object dengan nip `"123"`                       | 400/500 Bad Request, "NIP sudah terdaftar"         | ✅ Pass |
-| TC-01-03 | Tambah Karyawan Email Duplikat| Data berbeda tapi Email tetap `"a@b.com"`                    | 400/500 Bad Request, "Email sudah terdaftar"       | ✅ Pass |
-| TC-01-04 | Tanpa Nama             | `{"nama":"", "nip":"124", "email":"c@b.com"}`                       | 400 Bad Request (Validation Exception)             | ✅ Pass |
+| ID       | Skenario                      | Input                                                               | Expected Result                                    | Status  |
+| -------- | ----------------------------- | ------------------------------------------------------------------- | -------------------------------------------------- | ------- |
+| TC-01-01 | Tambah Karyawan valid         | `{"nama":"Andi", "nip":"123", "email":"a@b.com", "departemen":"IT"}`| 201 Created, success: true, data tersimpan         | ✅ Pass |
+| TC-01-02 | Tambah Karyawan NIP Duplikat  | Input ulang object dengan nip `"123"`                               | 400/500 Bad Request, "NIP sudah terdaftar"         | ✅ Pass |
+| TC-01-03 | Tambah Karyawan Email Duplikat| Data berbeda tapi Email tetap `"a@b.com"`                           | 400/500 Bad Request, "Email sudah terdaftar"       | ✅ Pass |
+| TC-01-04 | Tanpa Nama                    | `{"nama":"", "nip":"124", "email":"c@b.com"}`                       | 400 Bad Request (Validation Exception)             | ✅ Pass |
 
 ### 3.2 TC-02: Lookup & Modifikasi Karyawan (FR-02, FR-03, FR-04, FR-05)
 

@@ -5,7 +5,7 @@
 **Nama Proyek:** Absensi Karyawan API  
 **Versi Dokumen:** 1.0  
 **Tanggal:** 27 Februari 2026  
-**Penyusun:** Tim Pengembang  
+**Penyusun:** Dika Fahrozy 
 
 ---
 
@@ -60,10 +60,10 @@ Dokumen ini mengatur pengelolaan komunikasi proyek **Absensi Karyawan API**, men
 
 ### 3.2 Struktur Direktori Dokumentasi
 
-File-file dokumentasi disimpan terpusat di dalam repository source code pada folder `dokumentasi`:
+File-file dokumentasi disimpan terpusat di dalam repository source code pada folder `docs`:
 
 ```text
-/absensi/dokumentasi/
+/absensi/docs/
 ├── 01-spesifikasi-kebutuhan-perangkat-lunak.md
 ├── 02-rancangan-struktur-perangkat-lunak.md
 ├── 03-review-kebutuhan-perangkat-lunak.md
@@ -81,7 +81,6 @@ File-file dokumentasi disimpan terpusat di dalam repository source code pada fol
 Sistem backend menggunakan modul bawaan **Springdoc OpenAPI (Swagger)** yang akan meng-generate halaman spesifikasi API secara dinamis berdasarkan anotasi Controller. Ini menggantikan kebutuhan menulis ulang dokumentasi Postman secara manual.
 
 - **Akses Swagger UI**: `http://localhost:8080/swagger-ui/index.html` (Bila dijalankan di lokal)
-- **Akses JSON OpenAPI**: `http://localhost:8080/v3/api-docs`
 
 Komunikasi backend / frontend sangat bergantung pada kesepakatan format YAML/JSON dari OpenAPI documentation ini.
 
@@ -110,8 +109,8 @@ Semua endpoints Absensi & Karyawan sepakat mematuhi JSON response format yang di
 
 ### 5.2 Milestone Proyek
 
-| #   | Milestone                | Target      | Aktual      | Status     |
-| --- | ------------------------ | ----------- | ----------- | ---------- |
+| #   | Milestone                | Target       | Aktual       | Status     |
+| --- | ------------------------ | ------------ | ------------ | ---------- |
 | M1  | Setup Project Spring Boot| Sprint Hari 1| Sprint Hari 1| ✅ Selesai |
 | M2  | Setup DB Skema           | Sprint Hari 2| Sprint Hari 2| ✅ Selesai |
 | M3  | Implementasi Karyawan API| Sprint Hari 3| Sprint Hari 3| ✅ Selesai |
@@ -149,7 +148,7 @@ Semua endpoints Absensi & Karyawan sepakat mematuhi JSON response format yang di
 
 ## 8. Kesimpulan
 
-Tugas dokumentasi pengembangan sistem untuk aplikasi "Absensi Karyawan API" sudah terstruktur rapi dan transparan. Flow informasi antartim berjalan lancar berbasis dokumen .md (Markdown) yang menempel langsung dengan source code yang memungkinkan revisi secara Version Control System.
+Tugas dokumentasi pengembangan sistem untuk aplikasi "Absensi Karyawan API" sudah terstruktur rapi dan transparan. Flow informasi antar tim berjalan lancar berbasis dokumen .md (Markdown) yang menempel langsung dengan source code yang memungkinkan revisi secara Version Control System.
 
 ---
 

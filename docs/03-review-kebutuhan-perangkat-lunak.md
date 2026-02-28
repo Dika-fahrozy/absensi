@@ -5,7 +5,7 @@
 **Nama Proyek:** Absensi Karyawan API  
 **Versi Dokumen:** 1.0  
 **Tanggal:** 27 Februari 2026  
-**Penyusun:** Tim Pengembang  
+**Penyusun:** Dika Fahrozy  
 
 ---
 
@@ -84,7 +84,7 @@ Setiap kebutuhan dievaluasi berdasarkan kriteria berikut:
 | ------------ | ------ | -------------------------------------------------------------------- |
 | Kelengkapan  | ✅     | Business rule 1 kali sehari, validasi terlambat lewat 08:00 jelas    |
 | Konsistensi  | ✅     | Model enum `StatusAbsensi` sejalan dengan implementasi di service    |
-| Keterlacakan | ✅     | `AbsensiServiceImpl.checkIn(Long id)`                                |
+| Keterlacakan | ✅     | `AbsensiServiceImpl.checkIn(String nip)`                             |
 | Keterujian   | ✅     | Testable menggunakan unit test via Mock time/LocalDate               |
 | Kelayakan    | ✅     | Diimplementasikan dengan return object `AbsensiResponseDTO`          |
 | Kejelasan    | ✅     | Logic validasi "Anda sudah check-in hari ini" tidak ambigu.          |
@@ -99,7 +99,7 @@ Setiap kebutuhan dievaluasi berdasarkan kriteria berikut:
 | ------------ | ------ | ---------------------------------------------------- |
 | Kelengkapan  | ✅     | Update kolom `jam_keluar` dari record terkait absensi hari ini. |
 | Konsistensi  | ✅     | Konsisten dengan FR-06 |
-| Keterlacakan | ✅     | `AbsensiServiceImpl.checkOut(Long id)` |
+| Keterlacakan | ✅     | `AbsensiServiceImpl.checkOut(String nip)` |
 | Keterujian   | ✅     | Mudah dites menggunakan postman dan Junit |
 | Kelayakan    | ✅     | Diimplementasikan |
 | Kejelasan    | ✅     | Tidak ambigu |
@@ -157,8 +157,8 @@ Setiap kebutuhan dievaluasi berdasarkan kriteria berikut:
 | No  | Prioritas | Item                                                             | Target            |
 | --- | --------- | ---------------------------------------------------------------- | ----------------- |
 | 1   | 🔴 Tinggi | Implementasi role/login security wrapper via Spring Security     | Phase 2 Deployment|
-| 2   | 🟡 Sedang | Konversi *Hard Deletion* Data Karyawan menjadi *Soft Delete*      | Sprint berikutnya |
-| 3   | 🟡 Sedang | Buat pengaturan limit kedatangan (Terlambat) di level DB/Config   | Sprint berikutnya |
+| 2   | 🟡 Sedang | Konversi *Hard Deletion* Data Karyawan menjadi *Soft Delete*     | Sprint berikutnya |
+| 3   | 🟡 Sedang | Buat pengaturan limit kedatangan (Terlambat) di level DB/Config  | Sprint berikutnya |
 | 4   | 🔵 Rendah | API filter By Karyawan ID di laporan histori                     | Sprint berikutnya |
 | 5   | 🔵 Rendah | Pagination dan sorting untuk Master data Karyawan                | Backlog           |
 
@@ -174,10 +174,10 @@ Secara keseluruhan desain Sistem Informasi API Absensi Karyawan sudah berfungsi 
 
 | Peran           | Nama               | Tanggal      | Tanda Tangan       |
 | --------------- | ------------------ | ------------ | ------------------ |
-| System Analyst  | ********\_******** | 28/02/2026 | ********\_******** |
-| Lead Developer  | ********\_******** | 28/02/2026 | ********\_******** |
-| QA Engineer     | ********\_******** | 28/02/2026 | ********\_******** |
-| Project Manager | ********\_******** | 28/02/2026 | ********\_******** |
+| System Analyst  | ********\_******** | 28/02/2026   | ********\_******** |
+| Lead Developer  | ********\_******** | 28/02/2026   | ********\_******** |
+| QA Engineer     | ********\_******** | 28/02/2026   | ********\_******** |
+| Project Manager | ********\_******** | 28/02/2026   | ********\_******** |
 
 ---
 

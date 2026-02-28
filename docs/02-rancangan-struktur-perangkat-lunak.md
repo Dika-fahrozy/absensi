@@ -5,7 +5,7 @@
 **Nama Proyek:** Absensi Karyawan API  
 **Versi Dokumen:** 1.0  
 **Tanggal:** 27 Februari 2026  
-**Penyusun:** Tim Pengembang  
+**Penyusun:** Dika Fahrozy  
 
 ---
 
@@ -65,27 +65,27 @@ Dokumen mencakup:
 Sistem menggunakan **Layered Architecture** dengan pemisahan komponen sebagai berikut:
 
 ```text
-┌──────────────────────────────────────────────────┐
-│                 PRESENTATION LAYER               │
-│                   (Controllers)                  │
-│  AbsensiController.java │ KaryawanController.java│
-├──────────────────────────────────────────────────┤
-│                 BUSINESS LOGIC LAYER             │
-│                     (Services)                   │
-│  AbsensiServiceImpl.java │ KaryawanServiceImpl.java|
-├──────────────────────────────────────────────────┤
-│                 DATA ACCESS LAYER                │
-│             (Repositories / Spring Data)         │
-│  AbsensiRepository.java │ KaryawanRepository.java│
-├──────────────────────────────────────────────────┤
-│                 DATA LAYER                       │
-│              (Entities & Models)                 │
-│  Absensi.java           │ Karyawan.java          │
-├──────────────────────────────────────────────────┤
-│               CROSS-CUTTING CONCERNS             │
-│        (DTOs, Configurations, Exception Handling)│
-│  GlobalExceptionHandler.java | *Request/Response |
-└──────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                 PRESENTATION LAYER                   │
+│                   (Controllers)                      │
+│  AbsensiController.java │ KaryawanController.java    │
+├──────────────────────────────────────────────────────┤
+│                 BUSINESS LOGIC LAYER                 │
+│                     (Services)                       │
+│  AbsensiServiceImpl.java │ KaryawanServiceImpl.java  |
+├──────────────────────────────────────────────────────┤
+│                 DATA ACCESS LAYER                    │
+│             (Repositories / Spring Data)             │
+│  AbsensiRepository.java │ KaryawanRepository.java    │
+├──────────────────────────────────────────────────────┤
+│                 DATA LAYER                           │
+│              (Entities & Models)                     │
+│  Absensi.java           │ Karyawan.java              │
+├──────────────────────────────────────────────────────┤
+│               CROSS-CUTTING CONCERNS                 │
+│        (DTOs, Configurations, Exception Handling)    │
+│  GlobalExceptionHandler.java | *Request/Response     |
+└──────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -95,32 +95,45 @@ Sistem menggunakan **Layered Architecture** dengan pemisahan komponen sebagai be
 ### 3.1 Struktur Direktori (Package)
 
 ```text
-com.bnsp.absensi/
-├── AbsensiApplication.java           # Entry point aplikasi Spring Boot
-├── Config/                           # Konfigurasi aplikasi
-│   └── GlobalExceptionHandler.java   # Centralized error handling
-├── Controller/                       # REST endpoint handler
-│   ├── AbsensiController.java
-│   └── KaryawanController.java
-├── DTO/                              # Data Transfer Objects
-│   ├── KaryawanDTO.java
-│   ├── Request/
-│   │   └── AbsensiRequestDTO.java
-│   └── Response/
-│       ├── AbsensiResponseDTO.java
-│       └── ApiResponse.java          # Wrapper respons standar
-├── Model/                            # Definisi Entitas Database
-│   ├── Absensi.java                  # Entitas Absensi (transaksi)
-│   └── Karyawan.java                 # Entitas Karyawan (master)
-├── Repository/                       # Database interface (Spring Data JPA)
-│   ├── AbsensiRepository.java
-│   └── KaryawanRepository.java
-└── Service/                          # Business logic interface & implementasi
-    ├── AbsensiService.java
-    ├── KaryawanService.java
-    └── Impl/
-        ├── AbsensiServiceImpl.java
-        └── KaryawanServiceImpl.java
+absensi
+├── config/
+|   └── absensi.properties                        # Konfigurasi Aplikasi            
+├── src/
+|   ├── main/
+|   |   ├── java/com/bnsp/absensi/
+│   |   |   ├── AbsensiApplication.java           # Entry point aplikasi Spring Boot
+│   |   |   ├── Config/
+│   |   |   │   └── GlobalExceptionHandler.java   # Centralized error handling
+│   |   |   ├── Controller/                       # REST endpoint handler
+│   |   |   │   ├── AbsensiController.java
+│   |   |   │   └── KaryawanController.java
+│   |   |   ├── DTO/                              # Data Transfer Objects
+│   |   |   │   ├── KaryawanDTO.java
+│   |   |   │   ├── Request/
+│   |   |   │   │   └── AbsensiRequestDTO.java
+│   |   |   │   └── Response/
+│   |   |   │       ├── AbsensiResponseDTO.java
+│   |   |   │       └── ApiResponse.java          # Wrapper respons standar
+│   |   |   ├── Model/                            # Definisi Entitas Database
+│   |   |   │   ├── Absensi.java                  # Entitas Absensi (transaksi)
+│   |   |   │   └── Karyawan.java                 # Entitas Karyawan (master)
+│   |   |   ├── Repository/                       # Database interface (Spring Data JPA)
+│   |   |   │   ├── AbsensiRepository.java
+│   |   |   │   └── KaryawanRepository.java
+│   |   |   └── Service/                          # Business logic interface & implementasi
+│   |   |       ├── AbsensiService.java
+│   |   |       ├── KaryawanService.java
+│   |   |       └── Impl/
+│   |   |           ├── AbsensiServiceImpl.java
+│   |   |           └── KaryawanServiceImpl.java
+|   |   └── resources
+|   |       └── applications.properties           # Konfigurasi aplikasi (import dari folder config/)
+|   └── test/
+├── HELP.md                                       # Referensi Dokumentasi
+├── mvnw                                          # Script wrapper (unix)
+├── mvnw.cmd                                      # Script wrapper (windows)
+└── pom.xml                                       # Dependency & build config
+
 ```
 
 ### 3.2 Deskripsi Modul
@@ -176,9 +189,9 @@ com.bnsp.absensi/
 ### 4.3 Endpoint Manajemen Absensi (`/absensi`)
 
 | Method | Endpoint | Keterangan | Request Parameters | Response |
-| :--- | :--- | :--- | :--- | :--- |
-| `POST` | `/absensi/checkin` | Absen masuk | `?karyawanId={id}` | `201 Created` |
-| `POST` | `/absensi/checkout` | Absen keluar | `?karyawanId={id}` | `200 OK` |
+| :--- | :--- | :--- |:-----------------------------------| :--- |
+| `POST` | `/absensi/checkin` | Absen masuk | `?nip={nip}` | `201 Created` |
+| `POST` | `/absensi/checkout` | Absen keluar | `?nip={nip}` | `200 OK` |
 | `GET` | `/absensi/karyawan/range` | Rekap absensi | `?start=YYYY-MM-DD&end=YYYY-MM-DD` | `200 OK` + List |
 
 **Skema Payload Response: `AbsensiResponseDTO`**
@@ -192,7 +205,6 @@ com.bnsp.absensi/
   "jamMasuk": "07:55:00",
   "jamKeluar": "17:05:00",
   "status": "HADIR",
-  "keterangan": null,
   "durasiKerja": 9
 }
 ```
@@ -209,15 +221,14 @@ Sistem menggunakan database relasional (MySQL). Skema dibuat otomatis oleh JPA H
    ┌──────────────────────────┐           ┌───────────────────────────┐
    │       KARYAWAN           │           │         ABSENSI           │
    ├──────────────────────────┤           ├───────────────────────────┤
-   │ id          BIGINT   PK  │◀────┐     │ id           BIGINT   PK  │
-   │ nama        VARCHAR      │     │     │ karyawan_id  BIGINT   FK  │
-   │ nip         VARCHAR (UQ) │     │     │ tanggal      DATE         │
-   │ email       VARCHAR      │     └─────│ jam_masuk    TIME         │
-   │ departemen  VARCHAR      │    1:N    │ jam_keluar   TIME         │
+   │ id          BINARY   PK  │◀────┐     │ id           BINARY   PK  │
+   │ nama        VARCHAR      │     └─────│ karyawan_id  BINARY   FK  │
+   │ nip         VARCHAR (UQ) │    1:N    │ tanggal      DATE         │
+   │ email       VARCHAR      │           │ jam_masuk    TIME         │
+   │ departemen  VARCHAR      │           │ jam_keluar   TIME         │
    │ jabatan     VARCHAR      │           │ status       ENUM         │
-   │ created_at  DATETIME     │           │ keterangan   VARCHAR      │
-   └──────────────────────────┘           │ created_at   DATETIME     │
-                                          │ updated_at   DATETIME     │
+   │ created_at  TIMESTAMP    │           │ created_at   TIMESTAMP    │
+   └──────────────────────────┘           │ updated_at   TIMESTAMP    │
                                           └───────────────────────────┘
 ```
 
@@ -226,28 +237,27 @@ Sistem menggunakan database relasional (MySQL). Skema dibuat otomatis oleh JPA H
 #### Tabel: `karyawan`
 
 | Kolom | Tipe Data | Constraint | Keterangan |
-| :--- | :--- | :--- | :--- |
-| `id` | BIGINT | PRIMARY KEY, AUTO_INCREMENT | ID Identifier data karyawan. |
+| :--- |:----------| :--- | :--- |
+| `id` | BINARY | PRIMARY KEY | ID Identifier data karyawan. |
 | `nama` | VARCHAR | NOT NULL | Nama lengkap karyawan. |
 | `nip` | VARCHAR | NOT NULL, UNIQUE | Nomor Induk Pegawai. |
 | `email` | VARCHAR | NOT NULL, UNIQUE | Email resmi karyawan. |
 | `departemen` | VARCHAR | NULLABLE | Divisi/Departemen penempatan kerja. |
 | `jabatan` | VARCHAR | NULLABLE | Posisi jabatan kerja saat ini. |
-| `created_at` | DATETIME | | Waktu record dibuat di dalam sistem (`@PrePersist`). |
+| `created_at` | TIMESTAMP | | Waktu record dibuat di dalam sistem (`@PrePersist`). |
 
 #### Tabel: `absensi`
 
 | Kolom | Tipe Data | Constraint | Keterangan |
-| :--- | :--- | :--- | :--- |
-| `id` | BIGINT | PRIMARY KEY, AUTO_INCREMENT | ID Identifier data absensi. |
-| `karyawan_id`| BIGINT | FOREIGN KEY -> karyawan.id, NOT NULL| ID Karyawan yang melakukan absensi. |
+| :---- | :---- | :---- |:----|
+| `id` | BINARY | PRIMARY KEY | ID Identifier data absensi. |
+| `karyawan_id`| BINARY | FOREIGN KEY -> karyawan.id, NOT NULL| ID Karyawan yang melakukan absensi. |
 | `tanggal` | DATE | NOT NULL | Tanggal absensi berjalan. |
 | `jam_masuk` | TIME | NULLABLE | Waktu saat check-in. |
 | `jam_keluar` | TIME | NULLABLE | Waktu saat check-out. |
-| `status` | ENUM ('HADIR', 'TERLAMBAT', 'IZIN', 'SAKIT', 'ALFA') | NULLABLE | Status kehadiran di-derive saat check-in. |
-| `keterangan` | VARCHAR | NULLABLE | Alasan jika karyawan absensi selain hadir. |
-| `created_at` | DATETIME | | Waktu pembuatan tiket absensi. |
-| `updated_at` | DATETIME | | Waktu update saat proses check-out bekerja (`@PreUpdate`). |
+| `status` | ENUM ('HADIR', 'TERLAMBAT') | NULLABLE | Status kehadiran diset saat check-in. |
+| `created_at` | TIMESTAMP | | Waktu pembuatan tiket absensi. |
+| `updated_at` | TIMESTAMP | | Waktu update saat proses check-out bekerja (`@PreUpdate`). |
 
 ---
 
