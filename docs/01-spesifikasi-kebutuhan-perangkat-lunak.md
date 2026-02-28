@@ -198,7 +198,7 @@ Menghapus master data karyawan berdasarkan ID.
 Karyawan melakukan absensi masuk (check-in) untuk hari ini.
 
 **Aturan Bisnis:**
-- Karyawan harus valid (`karyawanId` terdaftar).
+- Karyawan harus valid (`nip` terdaftar).
 - Jika waktu check-in melebihi 08:00, status di set `TERLAMBAT`, jika tidak `HADIR`.
 - Karyawan tidak dapat check-in lebih dari satu kali di hari yang sama.
 
